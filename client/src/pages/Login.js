@@ -7,7 +7,9 @@ import {useNavigate, Link} from 'react-router-dom';
 import {ToastContainer, toast} from 'react-toastify';
 import {LoginRoute} from '../utils/API';
 
-
+function Login() {
+    
+}
 
 
 
