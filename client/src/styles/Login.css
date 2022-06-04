@@ -23,7 +23,7 @@
     text-transform: uppercase;
 }
 
-.loginForm {
+.form {
     display: flex;
     flex-direction: column;
     background-color: #14171A;
@@ -32,7 +32,7 @@
     border-radius: 2rem;
 }
 
-.formInput {
+.input {
     background-color: transparent;
     padding: auto;
     border: 0.25rem solid #14171A;
@@ -41,7 +41,7 @@
     font-size: 1rem;
 }
 
-.submitButton {
+.button {
     background-color: #1DA1F2;
     color: #F5F8FA;
     padding: 2rem;
@@ -50,7 +50,7 @@
     text-transform: uppercase;
 }
 
-.registerOption {
+.span {
     color: #F5F8FA;
     text-transform: uppercase;
     font-weight: bold;
