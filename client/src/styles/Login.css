@@ -1,0 +1,57 @@
+.container {
+    height: 100vh;
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #14171A;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    height: 5rem;
+}
+
+h1 {
+    color: #1DA1F2;
+    text-transform: uppercase;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #14171A;
+    color: #F5F8FA;
+    padding: 5rem;
+    border-radius: 2rem;
+}
+
+.formInput {
+    background-color: transparent;
+    padding: auto;
+    border: 0.25rem solid #14171A;
+    color: #F5F8FA;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.submitButton {
+    background-color: #1DA1F2;
+    color: #F5F8FA;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.registerOption {
+    color: #F5F8FA;
+    text-transform: uppercase;
+    font-weight: bold;
+}
