@@ -1,4 +1,4 @@
-.container {
+.FormContainer {
     height: 100vh;
     width: 100vh;
     display: flex;
@@ -14,11 +14,11 @@
     justify-content: center;
 }
 
-img {
+.img {
     height: 5rem;
 }
 
-h1 {
+.h1 {
     color: #1DA1F2;
     text-transform: uppercase;
 }
