@@ -58,8 +58,32 @@ export default function Login() {
     
 
     return (
-        <div>
-            <p>Test Login Page</p>
-        </div>
+        <>
+            <card>
+                <form action="" onSubmit={(event) => handleSubmit(event)}>
+                    <div className="header">
+                        <h1>Talk Sports</h1>
+                    </div>
+                    <input
+                    type= 'text'
+                    placeholder = 'Username'
+                    name = 'username'
+                    onChange = {(e) => handleChange(e)}
+                    min = '4' />
+                    <input
+                    type = 'password'
+                    placeholder= 'Password'
+                    name = 'password'
+                    onChange = {(e) => handleChange(e)}
+                    min = '4' />
+                    <button type="submit">Log In</button>
+                    <Link to = '/signup'>Account Signup</Link>
+                </form>
+            </card>
+        </>
     )
 };
+
+
+
+
