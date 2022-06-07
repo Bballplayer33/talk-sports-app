@@ -1,0 +1,25 @@
+// import React, { useState, useEffect } from "react";
+// import styled from "styled-components";
+
+
+//Function Welcome() {
+//   const [userName, setUserName] = useState("");
+//   useEffect(async () => {
+//     setUserName(
+//       await JSON.parse(
+//         localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+//       ).username
+//     );
+//   }, []);
+//   return (
+//     <FormContainer className="Welcome">
+//       <img src={Robot} alt="" />
+//       <h1>
+//         Welcome, <span>{userName}!</span>
+//       </h1>
+//       <h3>Please select a chat to Start messaging.</h3>
+//     </FormContainer>
+//   );
+// }
+
+//Function Chat ROOM options - button images & link to ./components/Chat
