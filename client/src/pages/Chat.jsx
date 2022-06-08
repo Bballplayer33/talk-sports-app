@@ -9,11 +9,62 @@ import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 
 export default function Chat() {
+    const navigate = useNavigate();
+    const socket = useRef;
+    const [contacts, setContacts] = useState([]);
+    const [currentChat, setCurrentChat] = useState(undefined);
+    const [currentUser, setCurrentUser] = useState(undefined);
+
+    useEffect(async () => {
+        if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+          navigate("/login");
+        } else {
+          setCurrentUser(
+            await JSON.parse(
+              localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+            )
+          );
+        }
+      }, []);
+
+      useEffect(() => {
+          if (currentUser) {
+              socket.current = io(host);
+              socket.current.emit('add-user', currentUser._id)
+          }
+      }, [currentUser]);
+
+      const handleChangeChat = (chat) => {
+          setCurrentChat(chat);
+      };
+
+
+
     return (
-        <div>
-            <p>Test Chat Page</p>
-        </div>
+        <>
+            <ChatContainerStyle>
+                <div className="card">
+                    <Contacts contacts ={contacts} changeChat = {handleChangeChat} />
+                    {currentChat === undefined ? (
+                        <Welcome />
+                    ):(
+                        <ChatContainer currentChat={currentChat} socket={socket} />
+                    )}
+                </div>
+            </ChatContainerStyle>
+        </>
     )
-};
+}
+
+const ChatContainerStyle = styled.div `
+    height:100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+`;
 
 
