@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { loginRoute } from "../utils/Routes";
 
 export default function Login() {
@@ -59,7 +57,7 @@ export default function Login() {
 
     return (
         <>
-            <card>
+            <LoginContainer>
                 <form action="" onSubmit={(event) => handleSubmit(event)}>
                     <div className="header">
                         <h1>Talk Sports</h1>
@@ -79,10 +77,24 @@ export default function Login() {
                     <button type="submit">Log In</button>
                     <Link to = '/signup'>Account Signup</Link>
                 </form>
-            </card>
+            </LoginContainer>
         </>
     )
-};
+}
+
+const LoginContainer = styled.div`
+  height:100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
 
 
