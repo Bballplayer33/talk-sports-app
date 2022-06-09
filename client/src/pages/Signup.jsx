@@ -3,6 +3,8 @@ import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
 import { signupRoute } from "../utils/Routes";
+import"../styles/signup.css"
+import Navbar from "../components/Navbar";
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -65,41 +67,43 @@ export default function Signup() {
     
 
     return (
-        <>
-        <SignupContainer>
-            <form action="" onSubmit={(event) => handleSubmit(event)}>
-                <div className="header">
-                    <h1>Talk Sports</h1>
-                </div>
-                <input
-                type= 'text'
-                placeholder = 'Username'
-                name = 'username'
-                onChange = {(e) => handleChange(e)}
-                min = '4' />
-                <input
-                type = 'password'
-                placeholder= 'Password'
-                name = 'password'
-                onChange = {(e) => handleChange(e)}
-                min = '4' />
-                <input
-                type = 'password'
-                placeholder= 'Confirm Password'
-                name = 'passwordconfirm'
-                onChange = {(e) => handleChange(e)}
-                min = '4' />
-                <input
-                type = 'email'
-                placeholder= 'Email'
-                name = 'email'
-                onChange = {(e) => handleChange(e)}
-                min = '4' />
-                <button type="submit">Create Account</button>
-                <Link to = '/login'>Login</Link>
-            </form>
-        </SignupContainer>
-    </>
+    <><Navbar/>
+        <div className="signupbody">
+
+<SignupContainer>
+    <form action="" onSubmit={(event) => handleSubmit(event)}>
+        <div className="header">
+            <h1>Talk Sports</h1>
+        </div>
+        <input
+        type= 'text'
+        placeholder = 'Username'
+        name = 'username'
+        onChange = {(e) => handleChange(e)}
+        min = '4' />
+        <input
+        type = 'password'
+        placeholder= 'Password'
+        name = 'password'
+        onChange = {(e) => handleChange(e)}
+        min = '4' />
+        <input
+        type = 'password'
+        placeholder= 'Confirm Password'
+        name = 'passwordconfirm'
+        onChange = {(e) => handleChange(e)}
+        min = '4' />
+        <input
+        type = 'email'
+        placeholder= 'Email'
+        name = 'email'
+        onChange = {(e) => handleChange(e)}
+        min = '4' />
+        <button type="submit">Create Account</button>
+        <Link to = '/login'>Login</Link>
+    </form>
+</SignupContainer>
+</div></>
     )
 }
 

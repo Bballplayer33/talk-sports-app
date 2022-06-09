@@ -1,0 +1,36 @@
+nav {
+    height: 60px;
+    background-color: gold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li {
+    margin: 0rem 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+li a {
+font-size: 40px;
+text-decoration: none;
+font-size:larger;
+}
+
+
+
+ul{
+    margin-right: 16px;
+    text-decoration: none;
+    display:flex;
+    list-style: none;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bolder;
+    margin-left: 16px;
+    font-family: sans-serif;
+}
