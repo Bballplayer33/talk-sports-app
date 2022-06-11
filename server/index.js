@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const { ApolloServer } = require('apollo-server-express');
 const db = require('./config/connection');
 
@@ -9,8 +8,8 @@ const messagesroute = require("./routes/messages");
 
 const app = express();
 const server = new ApolloServer({
-  // typeDefs,
-  // resolvers,
+  typeDefs,
+  resolvers,
 });
 const socket = require("socket.io");
 require("dotenv").config();
@@ -19,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // Create a new instance of an Apollo server with the GraphQL schema
-const startApolloServer = async () => {
+const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
   
