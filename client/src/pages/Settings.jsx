@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 export default function Settings() {
     const navigate = useNavigate();
-    const socket = useRef;
     const [currentUser, setCurrentUser] = useState(undefined);
 
     useEffect(async () => {
