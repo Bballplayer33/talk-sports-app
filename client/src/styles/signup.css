@@ -12,6 +12,9 @@ form{
     padding: 5rem;
     background-color:gold;
     border-radius: 10px;
+    border-style:groove;
+    box-shadow: rgb(38, 57, 77) 8px 20px 80px -10px;
+    font-family: system-ui;
   
 }
 
@@ -33,6 +36,6 @@ button {
 
 .header h1{
 font-size: xx-large;
-font-family:sans-serif;
 font-weight: bolder;
+font-family: fantasy;
 }
