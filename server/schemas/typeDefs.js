@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -8,16 +8,16 @@ const typeDefs = gql`
 
   type Message {
     _id: ID!
-    users: Array
+    sender: User
   }
 
   type Query {
-    user: [userM]
-    message(_id: String): [messageM]
+    users: [User]
+    message(_id: String): Message
   }
 
   type Mutation {
-    createMessage(user: String!, message: String!): messageM
+    createMessage(user: String!, message: String!): Message
   }
 `;
 

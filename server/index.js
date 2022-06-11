@@ -3,7 +3,7 @@ const cors = require("cors");
 const { ApolloServer } = require('apollo-server-express');
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
-
+const PORT = process.env.PORT || 3001;
 const authorizationRoute = require("./routes/authorization");
 const messagesRoute = require("./routes/messages");
 
