@@ -3,10 +3,10 @@ const { messageM } = require("../models/messageM");
 
 const resolvers = {
   Query: {
-    user: async () => {
+    users: async () => {
       return userM.find({});
     },
-    messages: async (parent, { _id }) => {
+    message: async (parent, { _id }) => {
       const params = _id ? { _id } : {};
       return messageM.find(params);
     },
