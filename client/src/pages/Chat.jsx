@@ -7,6 +7,7 @@ import { allUsersRoute, host } from "../utils/Routes";
 import ChatContainer from "../components/ChatContainer";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
+import"../styles/chat.css"
 
 export default function Chat() {
     const navigate = useNavigate();
@@ -38,12 +39,11 @@ export default function Chat() {
           setCurrentChat(chat);
       };
 
-
-
-    return (
+      
+     return (
         <>
             <ChatContainerStyle>
-                <div className="card">
+                    <div className="card">
                     <Contacts contacts ={contacts} changeChat = {handleChangeChat} />
                     {currentChat === undefined ? (
                         <Welcome />
@@ -52,6 +52,7 @@ export default function Chat() {
                     )}
                 </div>
             </ChatContainerStyle>
+
         </>
     )
 }
