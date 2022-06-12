@@ -1,35 +1,18 @@
 [
   {
-    "name": "Chance"
+    "name": "Chance",
+    "email": "chance@yahoo.com",
+    "password": "password01"
   },
   {
-    "name": "Steph"
+    "name": "Steph",
+    "email": "steph@yahoo.com",
+    "password": "password02"
   },
   {
-    "name": "Earl"
-  },
-  {
-    "name": "Erica"
-  },
-  {
-    "name": "Juan"
-  },
-  {
-    "name": "Ashley"
-  },
-  {
-    "name": "Derrick"
-  },
-  {
-    "name": "Helma"
-  },
-  {
-    "name": "Dkeith"
-  },
-  {
-    "name": "Lian"
-  },
-  {
-    "name": "Mike"
+    "name": "Earl",
+    "email": "earl@gmail.com",
+    "password": "password03"
   }
+
 ]
