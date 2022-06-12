@@ -1,22 +1,31 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const db = require('./config/connection');
-const { typeDefs, resolvers } = require('./schemas');
-const PORT = process.env.PORT || 3001;
-const authorizationRoute = require("./routes/authorization");
-const messagesRoute = require("./routes/messages");
+const path = require('path');
+const { authMiddleware } = require('./utils/auth');
+require('dotenv').config();
 
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+
+const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
 });
-const socket = require("socket.io");
-require("dotenv").config();
 
-app.use(cors());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
@@ -33,30 +42,3 @@ const startApolloServer = async (typeDefs, resolvers) => {
   
 // Call the async function to start the server
   startApolloServer(typeDefs, resolvers);
- 
-
-  app.use("/api/authorization", authorizationRoute);
-  app.use("/api/messages", messagesRoute);
-  
-
-const io = socket(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    credentials: true,
-  },
-});
-
-global.onlineUsers = new Map();
-io.on("connection", (socket) => {
-  global.chatSocket = socket;
-  socket.on("add-user", (userId) => {
-    onlineUsers.set(userId, socket.id);
-  });
-
-  socket.on("send-msg", (data) => {
-    const sendUserSocket = onlineUsers.get(data.to);
-    if (sendUserSocket) {
-      socket.to(sendUserSocket).emit("msg-recieve", data.msg);
-    }
-  });
-});
