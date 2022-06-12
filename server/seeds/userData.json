@@ -13,6 +13,7 @@
     "name": "Earl",
     "email": "earl@gmail.com",
     "password": "password03"
+
   },
   {
     "name": "Erica",
@@ -53,6 +54,7 @@
     "name": "Mike",
     "email": "mike@gmail.com",
     "password": "password11"
+
   }
-  
+
 ]
