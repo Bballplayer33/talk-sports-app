@@ -1,5 +1,5 @@
-const { userM } = require("../models/userM");
-const { messageM } = require("../models/messageM");
+const { userM, messageM } = require("../models");
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
