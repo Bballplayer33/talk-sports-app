@@ -63,7 +63,7 @@ export default function Login() {
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="header">
             <style>{'body { background-color: black; }'}</style>
-            <h1>Talk Sports</h1>
+            <h1>TALK SPORTS</h1>
           </div>
           <input
             type='text'
