@@ -3,11 +3,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
+import"../styles/chat.css"
 import { allUsersRoute, host } from "../utils/Routes";
 import ChatContainer from "../components/ChatContainer";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
-import"../styles/chat.css"
+
 
 export default function Chat() {
     const navigate = useNavigate();
@@ -39,12 +40,26 @@ export default function Chat() {
           setCurrentChat(chat);
       };
 
+      useEffect(async () => {
+        if (currentUser) {
+          if (currentUser.isAvatarImageSet) {
+            const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+            setContacts(data.data);
+          } else {
+            navigate("/setAvatar");
+          }
+        }
+      }, [currentUser]);
+      const handleChatChange = (chat) => {
+        setCurrentChat(chat);
+      };
+
       
      return (
         <>
             <ChatContainerStyle>
                     <div className="card">
-                    <Contacts contacts ={contacts} changeChat = {handleChangeChat} />
+                    <Contacts contacts ={contacts} changeChat = {handleChatChange} />
                     {currentChat === undefined ? (
                         <Welcome />
                     ):(
@@ -64,6 +79,8 @@ const ChatContainerStyle = styled.div `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    
 
 
 `;

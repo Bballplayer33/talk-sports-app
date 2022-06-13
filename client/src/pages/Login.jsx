@@ -2,15 +2,23 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
-import { loginRoute } from "../utils/Routes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/login.css"
-import Navbar from "../components/Navbar";
+//import Navbar from "../components/Navbar";
+import { loginRoute } from "../utils/Routes";
 
 export default function Login() {
-
   const navigate = useNavigate();
   const [values, setValues] = useState({ username: '', password: '' });
-
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+  
   useEffect(() => {
     if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
       navigate("/");
@@ -24,15 +32,15 @@ export default function Login() {
   const validateForm = () => {
     const { username, password } = values;
     if (username === "") {
-      console.error("Email and Password Required for Login.");
+      toast.error("Email and Password is required.", toastOptions);
       return false;
     } else if (password === "") {
-      console.error("Email and Password Required for Login.");
+      toast.error("Email and Password is required.", toastOptions);
       return false;
     }
     return true;
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (validateForm()) {
@@ -42,7 +50,7 @@ export default function Login() {
         password,
       });
       if (data.status === false) {
-        console.error(data.msg);
+        toast.error(data.msg, toastOptions);
       }
       if (data.status === true) {
         localStorage.setItem(
@@ -57,7 +65,8 @@ export default function Login() {
 
 
   return (
-    <><Navbar />
+    <>
+    {/* <Navbar /> */}
 
       <LoginContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
@@ -76,11 +85,12 @@ export default function Login() {
             placeholder='Password'
             name='password'
             onChange={(e) => handleChange(e)}
-            min='4' />
+            />
           <button type="submit">Log In</button>
           <Link to='/signup'>Account Signup</Link>
         </form>
       </LoginContainer>
+      <ToastContainer/>
     </>
   )
 }
@@ -97,6 +107,8 @@ const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
   }
+
+  
 `;
 
 

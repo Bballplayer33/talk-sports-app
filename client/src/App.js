@@ -8,9 +8,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Avatar" element={<Avatar />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/setAvatar" element={<Avatar />} />
         <Route path="/" element={<Chat />} />
       </Routes>
     </BrowserRouter>

@@ -14,7 +14,7 @@ export default function Welcome() {
 
     return (
         <WelcomeContainer>
-            <h1>Welcome {userName}</h1>
+            <h1>Welcome, {userName}</h1>
             <h2>Select A Chat To Begin</h2>
         </WelcomeContainer>
     );
@@ -26,4 +26,11 @@ const WelcomeContainer = styled.div `
     justicy-content: center;
     align-items: center;
     flex-direction: column;
+
+    img {
+        height: 20rem;
+      }
+      span {
+        color: #4e0eff;
+      }
 `;
