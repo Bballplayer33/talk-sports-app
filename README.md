@@ -10,9 +10,10 @@ ________________________________________________________________________________
 
 ## GitHub Contact Information
 
-
+* ericaLorraineMitchell https://github.com/ericaLorraineMitchell - Erica Lorraine Mitchell
 * Sdm1984 https://github.com/Sdm1984- Stephanie Mathis
-*
+* ChanceSupcoe  https://github.com/ChanceSupcoe  - Chance Supcoe
+* Bballplayer33  https://github.com/Bballplayer33 - Earl Adams
 
 ## USER STORY & CONCEPT 
 * As an avid sports fan
@@ -22,8 +23,8 @@ ________________________________________________________________________________
 ## Presentation Link - https://docs.google.com/presentation/d/1nlVu9VXNgA1PwOTKEmHdzFpTvrvasNylPNUPWoDKrtU/edit#slide=id.gfab7020b52_0_107
 
 ## Mock-Up
-__________________________________________________________________________________________________________________________________
+
 
 ## Credits
-___________________________________________________________________________________________________________________________________* Bitmoji - Bitmoji.com
+* Bitmoji - Bitmoji.com
 * Globenewswire - Globenewswire.com
