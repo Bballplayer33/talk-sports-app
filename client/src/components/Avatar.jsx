@@ -28,6 +28,26 @@ export default function Avatar() {
       number: 4,
       title: 'Erica',
       image: 'Erica'
+    },
+    {
+      number: 5,
+      title: 'Ashley',
+      image: 'Ashley'
+    },
+    {
+      number: 6,
+      title: 'Mike',
+      image: 'Mike'
+    },
+    {
+      number: 7,
+      title: 'Juan',
+      image: 'Juan'
+    },
+    {
+      number: 8,
+      title: 'Helma',
+      image: 'Helma'
     }
   ];
   const navigate = useNavigate();
