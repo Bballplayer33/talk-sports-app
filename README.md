@@ -1,12 +1,12 @@
-# Talk Sports App - Project 3
+# Talk Sports App 
 
 URL of Deployed Application:
 
-URL of GitHub Repository: 
+URL of GitHub Repository: https://github.com/Bballplayer33/talk-sports-app
 
 ## Meet The Team
 ___________________________________________________________________________________________________________________________________
-<img src="./src/assets/Team.png" alt="Team">
+<img src="./client/src/assets/Team.png" alt="Team">
 
 ## GitHub Contact Information
 
