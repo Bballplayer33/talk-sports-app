@@ -1,0 +1,33 @@
+
+/* these are chat room sports type url images */
+.baseball {
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    padding: 6px 2px;
+    background-color: gold;
+    color: black;
+}
+
+.basketball {
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    padding: 6px 2px;
+    background-color: gold;
+    color: black;
+}
+
+.football {
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    padding: 6px 2px;
+    background-color: gold;
+    color: black;
+}
+
+.soccer {
+    margin: 0.5rem 0;
+    border-radius: 10px;
+    padding: 6px 2px;
+    background-color: gold;
+    color: black;
+}
