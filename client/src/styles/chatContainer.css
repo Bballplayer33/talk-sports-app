@@ -1,0 +1,29 @@
+.header{
+    height: 100px;
+    display: flex;
+    width: 90%;
+    margin : 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-details{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.avater img{
+    height: 70px;
+    width: 70px;
+    border-radius: 12px;
+}
+
+.username{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 1rem;
+}
+
+.chat-messages{
+    margin : 3rem 4rem;
+}
