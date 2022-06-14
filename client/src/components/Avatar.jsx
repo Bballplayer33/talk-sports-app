@@ -7,8 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/Routes";
 
+
 export default function Avatar() {
-    const api = `https://api.multiavatar.com/4645646`;
+  const images = [
+    { src: '../assets/Ashley.png', alt: 'Your description here 1' }, 
+    { src: '../assets/Chance.png', alt: 'Your description here 2' }
+  ];
     const navigate = useNavigate();
     const [avatars, setAvatars] = useState([]);
     //const [isLoading, setIsLoading] = useState(true);
@@ -49,18 +53,7 @@ export default function Avatar() {
     }
     };
 
-    useEffect(async () => {
-        const data = [];
-        for (let i = 0; i < 4; i++) {
-          const image = await axios.get(
-            `${api}/${Math.round(Math.random() * 1000)}`
-          );
-          const buffer = new Buffer(image.data);
-          data.push(buffer.toString("base64"));
-        }
-        setAvatars(data);
-        //setIsLoading(false);
-      }, []);
+    
 
       return (
           <>
@@ -70,17 +63,26 @@ export default function Avatar() {
                     <h1>Select Your Profile Picture</h1>
                 </div>
                 <div className="avatar-options">
-                    {avatars.map((avatar, index) => {
-                        return (
-                            <div className={`avatar ${selectedAvatar === index ? 'selected' : ''}`} >
-                                <img 
-                                    src={`data:image/png + xml;base64,${avatar}`}
-                                    alt = 'avatar'
-                                    key = {avatar}
-                                    onClick = {() => setSelectedAvatar(index)} />
+                       
+                        <div >
+                        {images.map(function(imageProps) {  
+                                return (
+                                  
+                                        <li key={ imageProps.src }>
+                                          <button onClick = {() => setSelectedAvatar(imageProps.alt)}  >
+
+                                          <img src={ imageProps.src } alt={ imageProps.alt } />
+                                          
+                                          </button>
+                                        </li>
+                                      );
+                                    })}
+                                    
+                                   
+                                    
                             </div>
                         );
-                    })}
+                    
                 </div>
                 <button onClick={setProfileAvatar}>
                     Select Avatar
