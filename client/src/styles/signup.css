@@ -3,12 +3,9 @@
     background-image: url(https://cdn.wallpapersafari.com/20/83/6B5XQs.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    
- 
-   
 }   
 
-form{
+.signupform{
     padding: 5rem;
     background-color:gold;
     border-radius: 10px;

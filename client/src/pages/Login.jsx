@@ -69,7 +69,7 @@ export default function Login() {
     {/* <Navbar /> */}
 
       <LoginContainer>
-        <form action="" onSubmit={(event) => handleSubmit(event)}>
+        <form action="" className="loginForm" onSubmit={(event) => handleSubmit(event)}>
           <div className="header">
             <style>{'body { background-color: black; }'}</style>
             <h1>TALK SPORTS</h1>

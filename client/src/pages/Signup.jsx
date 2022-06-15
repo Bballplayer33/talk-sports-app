@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
-import"../styles/signup.css"
+import "../styles/signup.css"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signupRoute } from "../utils/Routes";
@@ -88,67 +88,60 @@ export default function Signup() {
     
     
     
-
     return (
-    <>
-    {/* <Navbar/>
-        <div className="signupbody"> */}
-
-<SignupContainer>
-    <form action="" onSubmit={(event) => handleSubmit(event)}>
-        <div className="header">
-          <h1>TALK SPORTS</h1>
+      <>
+        {/* <Navbar/> */}
+        <div className="signupbody">
+  
+          <SignupContainer>
+            <form action="" className="signupform" onSubmit={(event) => handleSubmit(event)}>
+              <div className="header">
+                <h1>TALK SPORTS</h1>
+              </div>
+              <input
+                type='text'
+                placeholder='Username'
+                name='username'
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                type='password'
+                placeholder='Password'
+                name='password'
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                type='password'
+                placeholder='Confirm Password'
+                name='confirmPassword'
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                type='email'
+                placeholder='Email'
+                name='email'
+                onChange={(e) => handleChange(e)}
+              />
+              <button type="submit">Create Account</button>
+              <Link to='/login'>Login</Link>
+            </form>
+          </SignupContainer>
         </div>
-        <input
-        type= 'text'
-        placeholder = 'Username'
-        name = 'username'
-        onChange = {(e) => handleChange(e)}
-        />
-        <input
-        type = 'password'
-        placeholder= 'Password'
-        name = 'password'
-        onChange = {(e) => handleChange(e)}
-        />
-        <input
-        type = 'password'
-        placeholder= 'Confirm Password'
-        name = 'confirmPassword'
-        onChange = {(e) => handleChange(e)}
-        />
-        <input
-        type = 'email'
-        placeholder= 'Email'
-        name = 'email'
-        onChange = {(e) => handleChange(e)}
-        />
-        <button type="submit">Create Account</button>
-        <Link to = '/login'>Login</Link>
-    </form>
-</SignupContainer>
-<ToastContainer />
-</>
+        <ToastContainer />
+      </>
     )
-}
-
-const SignupContainer = styled.div`
-  height:100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  form {
+  }
+  
+  const SignupContainer = styled.div`
+    height:100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-  }
-
-  
-`;
-
-
-
-
-
+    justify-content: center;
+    align-items: center;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+  `;

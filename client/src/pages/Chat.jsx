@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
-import"../styles/chat.css"
+import "../styles/chat.css"
 import { allUsersRoute, host } from "../utils/Routes";
 import ChatContainer from "../components/ChatContainer";
 import Contacts from "../components/Contacts";
@@ -59,9 +59,7 @@ export default function Chat() {
             <ChatContainerStyle>
                     <div className="card">
                     <Contacts contacts ={contacts} changeChat = {handleChatChange} />
-                   :(
                         <ChatContainer currentChat={currentChat} socket={socket} />
-                    )
                 </div>
             </ChatContainerStyle>
 

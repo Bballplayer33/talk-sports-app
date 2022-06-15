@@ -4,86 +4,87 @@ import ChatInput from "./ChatInput";
 import Logout from "./Logout";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
-import { sendMessageRoute, recieveMessageRoute } from "../utils/Routes";
+import { sendMessageRoute, receiveMessageRoute } from "../utils/Routes";
+import '../styles/chatContainer.css'
 
 export default function ChatContainer({currentChat, socket}) {
-    const [messages, setMessages] = useState([]);
-    const scrollRef = useRef();
-    const [arrivalMessage, setArrivalMessage] = useState(null);
+    // const [messages, setMessages] = useState([]);
+    // const scrollRef = useRef();
+    // const [arrivalMessage, setArrivalMessage] = useState(null);
 
-    useEffect(async () => {
-        const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
+    // useEffect(async () => {
+    //     const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
         
-        const response = await axios.post(recieveMessageRoute, {
-            from: data._id,
-            to: currentChat._id,
-        });
-        setMessages(response.data);
-    }, [currentChat]);
+    //     const response = await axios.postei, {
+    //         from: data._id,
+    //         to: currentChat._id,
+    //     });
+    //     setMessages(response.data);
+    // }, [currentChat]);
 
-    useEffect(() => {
-        const getCurrentChat = async () => {
-            if (currentChat) {
-                await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))._id;
-            }
-        };
-        getCurrentChat();
-    }, [currentChat]);
+    // useEffect(() => {
+    //     const getCurrentChat = async () => {
+    //         if (currentChat) {
+    //             await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))._id;
+    //         }
+    //     };
+    //     getCurrentChat();
+    // }, [currentChat]);
 
-    const handleSendMsg = async (msg) => {
-        const data = await JSON.parse(
-          localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-        );
-        socket.current.emit("send-msg", {
-          to: currentChat._id,
-          from: data._id,
-          msg,
-        });
-        await axios.post(sendMessageRoute, {
-          from: data._id,
-          to: currentChat._id,
-          message: msg,
-        });
+    // const handleSendMsg = async (msg) => {
+    //     const data = await JSON.parse(
+    //       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+    //     );
+    //     socket.current.emit("send-msg", {
+    //       to: currentChat._id,
+    //       from: data._id,
+    //       msg,
+    //     });
+    //     await axios.post(sendMessageRoute, {
+    //       from: data._id,
+    //       to: currentChat._id,
+    //       message: msg,
+    //     });
     
-        const msgs = [...messages];
-        msgs.push({ fromSelf: true, message: msg });
-        setMessages(msgs);
-      };
+    //     const msgs = [...messages];
+    //     msgs.push({ fromSelf: true, message: msg });
+    //     setMessages(msgs);
+    //   };
 
-      useEffect(() => {
-        if (socket.current) {
-          socket.current.on("msg-recieve", (msg) => {
-            setArrivalMessage({ fromSelf: false, message: msg });
-          });
-        }
-      }, []);
+    //   useEffect(() => {
+    //     if (socket.current) {
+    //       socket.current.on("msg-receive", (msg) => {
+    //         setArrivalMessage({ fromSelf: false, message: msg });
+    //       });
+    //     }
+    //   }, []);
     
-      useEffect(() => {
-        arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-      }, [arrivalMessage]);
+    //   useEffect(() => {
+    //     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+    //   }, [arrivalMessage]);
     
-      useEffect(() => {
-        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, [messages]);
+    //   useEffect(() => {
+    //     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+    //   }, [messages]);
 
       return (
         <ChatContainerDiv>
             <div className="header">
                 <div className="user-details">
-                    <div className="avater">
-                    <img src={`data:image/svg+xml;base64,${currentChat.avatarImage}`} alt='avatar' />
+                    <div className="avatar">
+                    {/* <img src={`data:image/svg+xml;base64,${currentChat.avatarImage}`} alt='avatar' /> */}
                     </div>
                     <div className="username">
-                        <h3>{currentChat.username}</h3>
+                        {/* <h3>{currentChat.username}</h3> */}
                     </div>
                 </div>
                 <Logout />
             </div>
             <div className="chat-messages">
-                {messages.map((message) => {
+                {/* {messages.map((message) => {
                     return (
                         <div ref= {scrollRef} key={uuidv4()}>
-                        <div className={`message ${message.fromSelf ? 'sended' : 'recieved'}`}>
+                        <div className={`message ${message.fromSelf ? 'sended' : 'received'}`}>
                             <div className="content">
                                 <p>{message.message}</p>
                             </div>
@@ -92,18 +93,19 @@ export default function ChatContainer({currentChat, socket}) {
                     );
                 })}
             </div>
-            <ChatInput handleSendMsg={handleSendMsg} />
+            <ChatInput handleSendMsg={handleSendMsg} /> */}
+            </div>
         </ChatContainerDiv>
       );
 }
 
-const ChatContainerDiv = styled.div `
+const ChatContainerDiv = styled.div`
     display: grid;
+    
     grid-template-rows: 10% 80% 10%;
     overflow: hidden;
     @media screen and (min-width: 720px) and (max-width: 1080px) {
     grid-template-rows: 15% 70% 15%;}
-
     .chat-header {
       display: flex;
       justify-content: space-between;
@@ -157,15 +159,16 @@ const ChatContainerDiv = styled.div `
       .sended {
         justify-content: flex-end;
         .content {
-          background-color: #4f04ff21;
+          background-color: #7962e3;
+          color : white;
         }
       }
-      .recieved {
+      .received {
         justify-content: flex-start;
         .content {
-          background-color: #9900ff20;
+          background-color: gold;
+          color : black;
         }
       }
     }
-
 `;
