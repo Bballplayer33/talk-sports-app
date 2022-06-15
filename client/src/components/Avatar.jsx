@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -70,14 +69,14 @@ export default function Avatar() {
 
   const setProfileAvatar = async () => {
     if (selectedAvatar === undefined) {
-      toast.error("Please select an avatar", toastOptions);
+      toast.error("Please select avatar", toastOptions);
     } else {
       const user = await JSON.parse(
         localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
       );
 
       const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
-        image: avatars[selectedAvatar],
+        image: images[selectedAvatar],
       });
 
       if (data.isSet) {
@@ -115,7 +114,6 @@ export default function Avatar() {
             ))};
           </div>
           <button className="select-button" onClick={setProfileAvatar}>Select Avatar</button>
-          <ToastContainer />
         </div>
       }
     </>

@@ -13,7 +13,11 @@
     align-items: center;
 }
 
+<<<<<<< HEAD
+.avatar img{
+=======
 .avater img{
+>>>>>>> d0243d70f942a4129abedef0d2763435d5885e19
     height: 70px;
     width: 70px;
     border-radius: 12px;
