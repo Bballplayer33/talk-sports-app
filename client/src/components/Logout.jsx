@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { BiPowerOff } from "react-icons/bi";
 import axios from "axios";
 import { logoutRoute } from "../utils/Routes";
+import '../styles/logoutBtn.css'
 
 export default function Logout() {
     const navigate = useNavigate();
@@ -17,8 +18,11 @@ export default function Logout() {
     };
 
     return (
-        <div className="logoutBtn" onClick={handleClick}>
-            <BiPowerOff />
+
+        <div className="logoutBtn" onClick={handleClick}>           
+         <BiPowerOff />
         </div>
     );
-    }
+}
+
+

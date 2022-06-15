@@ -4,7 +4,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/Routes";
+
 import '../styles/avatar.css'
+
 
 export default function Avatar() {
   const images = [
@@ -112,10 +114,10 @@ export default function Avatar() {
             ))};
           </div>
           <button className="select-button" onClick={setProfileAvatar}>Select Avatar</button>
+          <ToastContainer />
+
         </div>
       }
     </>
   );
 }
-
-

@@ -51,6 +51,7 @@ export default function Contacts({ contacts, changeChat }) {
           <div className="current-user">
             {/* <div className="avatar">
               <img
+
                     src={contact.avatarImage}
                     alt="avatar"
               /> */}
