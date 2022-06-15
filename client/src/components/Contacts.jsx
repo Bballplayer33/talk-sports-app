@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-// import '../styles/contacts.css'
 
 export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
+
+  console.log(currentUserName);
+  console.log(currentSelected);
 
   useEffect(async () => {
     const data = await JSON.parse(
@@ -21,9 +23,9 @@ export default function Contacts({ contacts, changeChat }) {
 
   return (
     <>
-      {currentUserImage && currentUserImage && (
-          <ContactsContainer>
-<div className="header">
+      {currentUserName && (
+        <ContactsContainer>
+          <div className="header">
             <h2>Talk Sports</h2>
           </div>
           <div className="contacts">
@@ -31,14 +33,13 @@ export default function Contacts({ contacts, changeChat }) {
               return (
                 <div
                   key={contact._id}
-                  className={`contact ${
-                    index === currentSelected ? "selected" : ""
-                  }`}
+                  className={`contact ${index === currentSelected ? "selected" : ""
+                    }`}
                   onClick={() => changeCurrentChat(index, contact)}
                 >
                   <div className="avatar">
                     <img
-                      src={contact.avatarImage}
+                      src={`data:image/svg+xml;base64,${contact.avatarImage}`}
                     />
                   </div>
                   <div className="username">
@@ -49,17 +50,16 @@ export default function Contacts({ contacts, changeChat }) {
             })}
           </div>
           <div className="current-user">
-            {/* <div className="avatar">
+            <div className="avatar">
               <img
-
-                    src={contact.avatarImage}
-                    alt="avatar"
-              /> */}
+                src={`data:image/svg+xml;base64,${currentUserImage}`}
+                alt="avatar"
+              />
             </div>
             <div className="username">
               <h3>{currentUserName}</h3>
             </div>
-          {/* </div> */}
+          </div>
         </ContactsContainer>
       )}
     </>
@@ -151,3 +151,6 @@ const ContactsContainer = styled.div`
     }
   }
 `;
+
+
+

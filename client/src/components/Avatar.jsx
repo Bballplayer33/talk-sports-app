@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/Routes";
-
 import '../styles/avatar.css'
 
 
@@ -62,6 +61,7 @@ export default function Avatar() {
     theme: "dark",
   };
 
+  console.log(selectedAvatar)
   useEffect(async () => {
     if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
       navigate("/login");
@@ -76,8 +76,10 @@ export default function Avatar() {
       );
 
       const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
-        image: images[selectedAvatar],
+        image: avatars[selectedAvatar],
       });
+
+      console.log(data)
 
       if (data.isSet) {
         user.isAvatarImageSet = true;
@@ -121,3 +123,5 @@ export default function Avatar() {
     </>
   );
 }
+
+
