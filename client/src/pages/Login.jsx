@@ -18,7 +18,7 @@ export default function Login() {
     draggable: true,
     theme: "dark",
   };
-  
+
   useEffect(() => {
     if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
       navigate("/");
@@ -40,7 +40,7 @@ export default function Login() {
     }
     return true;
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (validateForm()) {
@@ -66,10 +66,10 @@ export default function Login() {
 
   return (
     <>
-    {/* <Navbar /> */}
+      {/* <Navbar /> */}
 
       <LoginContainer>
-        <form action="" onSubmit={(event) => handleSubmit(event)}>
+        <form action="" className="loginForm" onSubmit={(event) => handleSubmit(event)}>
           <div className="header">
             <style>{'body { background-color: black; }'}</style>
             <h1>TALK SPORTS</h1>
@@ -85,12 +85,12 @@ export default function Login() {
             placeholder='Password'
             name='password'
             onChange={(e) => handleChange(e)}
-            />
+          />
           <button type="submit">Log In</button>
           <Link to='/signup'>Account Signup</Link>
         </form>
       </LoginContainer>
-      <ToastContainer/>
+      <ToastContainer />
     </>
   )
 }

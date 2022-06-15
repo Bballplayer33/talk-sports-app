@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import Moment from 'react-moment';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../styles/welcome.css"
+
 
 export default function Welcome() {
     const [userName, setUserName] = useState('');
@@ -11,8 +11,8 @@ export default function Welcome() {
         setUserName(
             await JSON.parse(
                 localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-                ) .username
-                );
+            ).username
+        );
     }, []);
 
     const navigate = useNavigate();
@@ -20,38 +20,31 @@ export default function Welcome() {
     const chatRoom = () => {
         navigate("/chat");
     };
-        // const dateToFormat = new Date('1976-04-19T12:59-0500');
+    // const dateToFormat = new Date('1976-04-19T12:59-0500');
 
     return (
-        <WelcomeContainer>
-            <h1>Welcome, {userName}</h1>
-            <h2>Select A Chat To Begin</h2>
-            <div className="chatRooms-container">
-            <div>
-            <Moment  parse="YYYY-MM-DD HH:mm">
-                2022-06-15 7:15</Moment>
+        <div className="welcome-wrapper" >
+            <div className="welcome-container" >
+                <h1 >Welcome, {userName}</h1>
+                <h2>Select A Chat To Begin</h2>
+                <div className="chatRooms-container">
+                    <div className="date" >
+                        <Moment parse="YYYY-MM-DD HH:mm">
+                            2022-06-15 7:15</Moment>
+                    </div>
+                    <section className="chatrooms" >
+
+                        <div className="baseball" onClick={chatRoom} />
+                        <div className="basketball" onClick={chatRoom} />
+                        <div className="soccer" onClick={chatRoom} />
+                        <div className="football" onClick={chatRoom} />
+                    </section>
+                </div>
+
             </div>
-            <button className="baseball" onClick={chatRoom}> Chat Room1 </button>
-            <button className="basketball" onClick={chatRoom}> Chat Room2 </button>
-            <button className="football" onClick={chatRoom}> Chat Room3 </button>
-            <button className="soccer" onClick={chatRoom}> Chat Room4 </button>
-            </div>
-            
-        </WelcomeContainer>
+        </div>
+
     );
 
 }
 
-const WelcomeContainer = styled.div `
-    display: flex;
-    justicy-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    img {
-        height: 20rem;
-      }
-      span {
-        color: #4e0eff;
-      }
-`;
