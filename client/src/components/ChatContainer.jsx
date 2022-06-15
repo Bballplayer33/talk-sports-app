@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
 import ChatInput from "./ChatInput";
 import Logout from "./Logout";
 import { v4 as uuidv4 } from "uuid";
+import '../styles/chatContainer.css'
 import axios from "axios";
 import { sendMessageRoute, receiveMessageRoute } from "../utils/Routes";
+
 import '../styles/chatContainer.css'
 
 export default function ChatContainer({currentChat, socket}) {
@@ -67,19 +68,20 @@ export default function ChatContainer({currentChat, socket}) {
     //     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
     //   }, [messages]);
 
-      return (
-        <ChatContainerDiv>
-            <div className="header">
-                <div className="user-details">
-                    <div className="avatar">
-                    {/* <img src={`data:image/svg+xml;base64,${currentChat.avatarImage}`} alt='avatar' /> */}
-                    </div>
-                    <div className="username">
-                        {/* <h3>{currentChat.username}</h3> */}
-                    </div>
-                </div>
-                <Logout />
-            </div>
+ 
+  return (
+    <ChatContainer>
+      <div className="header">
+        <div className="user-details">
+          <div className="avatar">
+            {/* <img src={currentChat.avatarImage} alt='avatar' /> */}
+          </div>
+          <div className="username">
+            {/* <h3>{currentChat.username}</h3> */}
+          </div>
+        </div>
+        <Logout />
+      </div>
             <div className="chat-messages">
                 {/* {messages.map((message) => {
                     return (
@@ -172,3 +174,6 @@ const ChatContainerDiv = styled.div`
       }
     }
 `;
+
+  
+

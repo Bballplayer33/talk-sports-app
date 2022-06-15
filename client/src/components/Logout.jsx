@@ -18,9 +18,11 @@ export default function Logout() {
     };
 
     return (
+
         <div className="logoutBtn" onClick={handleClick}>           
          <BiPowerOff />
         </div>
     );
 }
+
 

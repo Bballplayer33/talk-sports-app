@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+// import '../styles/contacts.css'
 
 export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
@@ -50,8 +51,9 @@ export default function Contacts({ contacts, changeChat }) {
           <div className="current-user">
             {/* <div className="avatar">
               <img
-                      src={contact.avatarImage}
-                      alt="avatar"
+
+                    src={contact.avatarImage}
+                    alt="avatar"
               /> */}
             </div>
             <div className="username">

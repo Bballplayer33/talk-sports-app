@@ -1,13 +1,14 @@
 // import React, { useState, useEffect } from "react";
-// import styled from "styled-components";
 // import Moment from 'react-moment';
-// import {useNavigate} from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import "../styles/welcome.css"
 
-// export default function Welcome({chatRoom, changeChat}) {
+
+// export default function Welcome() {
 //     const [userName, setUserName] = useState('');
 //     const [currentUser, setCurrentUser] = useState(undefined);
 //     const [currentSelected, setCurrentSelected] = useState(undefined);
+
 
 //     useEffect(async () => {
 //         if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
@@ -21,15 +22,13 @@
 //         }
 //       }, []);
 
-
 //     useEffect(async () => {
 //         setUserName(
 //             await JSON.parse(
 //                 localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-//                 ) .username
-//                 );
+//             ).username
+//         );
 //     }, []);
-
 
 //     const navigate = useNavigate();
 

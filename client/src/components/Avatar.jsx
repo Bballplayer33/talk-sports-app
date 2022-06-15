@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/Routes";
-import styled from "styled-components";
+
 import '../styles/avatar.css'
 
 
@@ -69,7 +69,7 @@ export default function Avatar() {
 
   const setProfileAvatar = async () => {
     if (selectedAvatar === undefined) {
-      toast.error("Please select avatar", toastOptions);
+      toast.error("Select avatar", toastOptions);
     } else {
       const user = await JSON.parse(
         localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
@@ -88,7 +88,7 @@ export default function Avatar() {
         );
         navigate("/");
       } else {
-        toast.error("Error setting avatar. Please try again.", toastOptions);
+        toast.error("Error. Set avatar.", toastOptions);
       }
     }
   };
@@ -115,6 +115,7 @@ export default function Avatar() {
           </div>
           <button className="select-button" onClick={setProfileAvatar}>Select Avatar</button>
           <ToastContainer />
+
         </div>
       }
     </>
