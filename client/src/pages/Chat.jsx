@@ -9,7 +9,6 @@ import ChatContainer from "../components/ChatContainer";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 
-
 export default function Chat() {
     const navigate = useNavigate();
     const socket = useRef;
@@ -60,11 +59,9 @@ export default function Chat() {
             <ChatContainerStyle>
                     <div className="card">
                     <Contacts contacts ={contacts} changeChat = {handleChatChange} />
-                    {currentChat === undefined ? (
-                        <Welcome />
-                    ):(
+                   :(
                         <ChatContainer currentChat={currentChat} socket={socket} />
-                    )}
+                    )
                 </div>
             </ChatContainerStyle>
 
