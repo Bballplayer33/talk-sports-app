@@ -7,6 +7,9 @@ export default function Contacts({ contacts, changeChat }) {
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
 
+  console.log(currentUserName);
+  console.log(currentSelected);
+
   useEffect(async () => {
     const data = await JSON.parse(
       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
@@ -14,6 +17,7 @@ export default function Contacts({ contacts, changeChat }) {
     setCurrentUserName(data.username);
     setCurrentUserImage(data.avatarImage);
   }, []);
+
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
     changeChat(contact);
@@ -21,7 +25,7 @@ export default function Contacts({ contacts, changeChat }) {
 
   return (
     <>
-      {currentUserImage && currentUserImage && (
+      {currentUserImage &&  (
           <ContactsContainer>
 <div className="header">
             <h2>Talk Sports</h2>
@@ -38,8 +42,8 @@ export default function Contacts({ contacts, changeChat }) {
                 >
                   <div className="avatar">
                     <img
-                      src={contact.avatarImage}
-                    />
+                      src={`data:image/svg+xml;base64,${contact.avatarImage}`}
+                      />
                   </div>
                   <div className="username">
                     <h3>{contact.username}</h3>
@@ -49,17 +53,16 @@ export default function Contacts({ contacts, changeChat }) {
             })}
           </div>
           <div className="current-user">
-            {/* <div className="avatar">
+            <div className="avatar">
               <img
-
-                    src={contact.avatarImage}
-                    alt="avatar"
-              /> */}
+              src={`data:image/svg+xml;base64,${currentUserImage}`}
+              alt="avatar"
+              />
             </div>
             <div className="username">
               <h3>{currentUserName}</h3>
             </div>
-          {/* </div> */}
+          </div>
         </ContactsContainer>
       )}
     </>

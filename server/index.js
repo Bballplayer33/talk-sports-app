@@ -5,6 +5,7 @@ const authRoutes = require("./routes/authorization");
 const messageRoutes = require("./routes/messages");
 const app = express();
 const socket = require("socket.io");
+const chatroom = "sports";
 require("dotenv").config();
 
 app.use(cors());
@@ -40,12 +41,10 @@ io.on("connection", (socket) => {
   global.chatSocket = socket;
   socket.on("add-user", (userId) => {
     onlineUsers.set(userId, socket.id);
+    socket.join(chatroom);
   });
 
-  socket.on("send-msg", (data) => {
-    const sendUserSocket = onlineUsers.get(data.to);
-    if (sendUserSocket) {
-      socket.to(sendUserSocket).emit("msg-recieve", data.msg);
-    }
+  socket.on("msg-sent", (data) => {
+    io.in(chatroom).emit("msg-recieved", data);
   });
 });

@@ -1,72 +1,58 @@
 import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
 import ChatInput from "./ChatInput";
 import Logout from "./Logout";
 import { v4 as uuidv4 } from "uuid";
 import '../styles/chatContainer.css'
-import axios from "axios";
-import { sendMessageRoute, receiveMessageRoute } from "../utils/Routes";
-import styled from "styled-components";
+import { io } from "socket.io-client";
+import { host } from "../utils/Routes";
+import { useNavigate } from 'react-router-dom'
 
+export default function ChatContainer() {
+  const [messages, setMessages] = useState([]);
+  const [socket, setSocket] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null)
+  const scrollRef = useRef();
+  const navigate = useNavigate()
+  useEffect(async () => {
+    if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+      navigate("/login");
+    } else {
+      setCurrentUser(
+        await JSON.parse(
+          localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+        )
+      );
+    }
+  }, []);
 
-export default function ChatContainer({currentChat, socket}) {
-    // const [messages, setMessages] = useState([]);
-    // const scrollRef = useRef();
-    // const [arrivalMessage, setArrivalMessage] = useState(null);
+  useEffect(() => {
+    if (currentUser) {
+      if (!socket) {
+        let mainSocket = io(host, { transports: ["websocket"] });
+        mainSocket.emit('add-user', currentUser._id);
+        setSocket(mainSocket)
+      } else {
+        socket.on("msg-received", data => {
+          setMessages(msg => [...msg, data])
+        })
+      }
+    }
+  }, [currentUser, socket]);
 
-    // useEffect(async () => {
-    //     const data = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
-        
-    //     const response = await axios.postei, {
-    //         from: data._id,
-    //         to: currentChat._id,
-    //     });
-    //     setMessages(response.data);
-    // }, [currentChat]);
+  console.log(messages)
 
-    // useEffect(() => {
-    //     const getCurrentChat = async () => {
-    //         if (currentChat) {
-    //             await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))._id;
-    //         }
-    //     };
-    //     getCurrentChat();
-    // }, [currentChat]);
+  const handleSendMsg = async (msg) => {
+    const data = {
+      currentUser, message: msg
+    }
+    socket.emit('msg-sent', data)
+  };
 
-    // const handleSendMsg = async (msg) => {
-    //     const data = await JSON.parse(
-    //       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-    //     );
-    //     socket.current.emit("send-msg", {
-    //       to: currentChat._id,
-    //       from: data._id,
-    //       msg,
-    //     });
-    //     await axios.post(sendMessageRoute, {
-    //       from: data._id,
-    //       to: currentChat._id,
-    //       message: msg,
-    //     });
-    
-    //     const msgs = [...messages];
-    //     msgs.push({ fromSelf: true, message: msg });
-    //     setMessages(msgs);
-    //   };
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
 
-    //   useEffect(() => {
-    //     if (socket.current) {
-    //       socket.current.on("msg-receive", (msg) => {
-    //         setArrivalMessage({ fromSelf: false, message: msg });
-    //       });
-    //     }
-    //   }, []);
-    
-    //   useEffect(() => {
-    //     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-    //   }, [arrivalMessage]);
-    
-    //   useEffect(() => {
-    //     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-    //   }, [messages]);
+  }, [messages]);
 
  
   return (
@@ -74,31 +60,30 @@ export default function ChatContainer({currentChat, socket}) {
       <div className="header">
         <div className="user-details">
           <div className="avatar">
-            {/* <img src={currentChat.avatarImage} alt='avatar' /> */}
+          <img src={require('../assets/welcome/Basketball.png')} />
           </div>
           <div className="username">
-            {/* <h3>{currentChat.username}</h3> */}
+          <h3>{'All Chats'}</h3>
           </div>
         </div>
         <Logout />
       </div>
-            <div className="chat-messages">
-                {/* {messages.map((message) => {
-                    return (
-                        <div ref= {scrollRef} key={uuidv4()}>
-                        <div className={`message ${message.fromSelf ? 'sended' : 'received'}`}>
-                            <div className="content">
-                                <p>{message.message}</p>
-                            </div>
-                        </div>
-                    </div>
-                    );
-                })}
+      <div className="chat-messages" style={{ overflowY: "scroll" }} >
+        {messages.map((message) => {
+          return (
+            <div ref={scrollRef} key={uuidv4()}>
+              <div className={`message ${message.currentUser.username == currentUser.username ? 'sended' : 'received'}`}>
+                <div className="content">
+                  <p>{message.message}</p>
+                </div>
+              </div>
             </div>
-            <ChatInput handleSendMsg={handleSendMsg} /> */}
-            </div>
-        </ChatContainerDiv>
-      );
+          );
+        })}
+        <ChatInput handleSendMsg={handleSendMsg} />
+      </div>
+    </ChatContainerDiv>
+  );
 }
 
 const ChatContainerDiv = styled.div`

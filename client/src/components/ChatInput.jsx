@@ -5,7 +5,6 @@ import Picker from "emoji-picker-react";
 import '../styles/chatInput.css'
 
 
-
 export default function ChatInput({ handleSendMsg }) {
   const { msg, setMsg } = useState('');
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
