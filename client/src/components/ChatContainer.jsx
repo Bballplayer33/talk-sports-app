@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 import '../styles/chatContainer.css'
 import axios from "axios";
 import { sendMessageRoute, receiveMessageRoute } from "../utils/Routes";
+import styled from "styled-components";
 
-import '../styles/chatContainer.css'
 
 export default function ChatContainer({currentChat, socket}) {
     // const [messages, setMessages] = useState([]);
@@ -70,7 +70,7 @@ export default function ChatContainer({currentChat, socket}) {
 
  
   return (
-    <ChatContainer>
+    <ChatContainerDiv>
       <div className="header">
         <div className="user-details">
           <div className="avatar">

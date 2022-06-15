@@ -22,8 +22,8 @@ export default function Contacts({ contacts, changeChat }) {
   return (
     <>
       {currentUserImage && currentUserImage && (
-        <ContactsContainer>
-          <div className="header">
+          <ContactsContainer>
+<div className="header">
             <h2>Talk Sports</h2>
           </div>
           <div className="contacts">
