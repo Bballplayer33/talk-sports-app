@@ -1,0 +1,52 @@
+.avatar-wrapper{
+    height: 100vh;
+    background-color: #0f131a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.avatar-wrapper .title h1{
+    font-size: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+    margin-bottom: 3rem;
+    color :#fff
+}
+
+.avatar-options{
+    height: fit-content;
+    width: 770px;
+    margin : 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+ .avatar-options li{
+    list-style: none;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.avatar-options li button{
+    background-color: gold;
+    color:#060b14;
+    font-weight: 500;
+}
+
+.avatar-options li:hover{
+    transform: scale(1.1);
+}
+
+.select-button{
+    background-color: gold;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 22px;
+    border-radius: 10px;
+    color : #21324d;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
