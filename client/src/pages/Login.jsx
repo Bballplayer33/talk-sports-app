@@ -66,9 +66,7 @@ export default function Login() {
 
   return (
     <>
-      {/* <Navbar /> */}
-
-      <LoginContainer>
+      <div className="loginContainer">
         <form action="" className="loginForm" onSubmit={(event) => handleSubmit(event)}>
           <div className="header">
             <style>{'body { background-color: black; }'}</style>
@@ -89,27 +87,11 @@ export default function Login() {
           <button type="submit">Log In</button>
           <Link to='/signup'>Account Signup</Link>
         </form>
-      </LoginContainer>
-      <ToastContainer />
+      </div>
     </>
   )
 }
 
-const LoginContainer = styled.div`
-  height:100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  
-`;
 
 
 

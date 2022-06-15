@@ -8,7 +8,7 @@ import '../styles/logoutBtn.css'
 export default function Logout() {
     const navigate = useNavigate();
     const handleClick = async () => {
-        const id = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_KEY))._id;
+        const id = await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_KEY));
         const data = await axios.get(`${logoutRoute}/${id}`);
 
         if (data.status === 200) {

@@ -1,5 +1,4 @@
 .chatContainer{
-    z-index: 9999;
     display: flex;
     bottom: 0;
     position: absolute;
@@ -10,16 +9,15 @@
 .chatContainer form{
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    width: 90%;
+    width: 100vw;
     margin: auto;
-    max-height: 60px !important;
+    max-height: 60px;
 
 }
 
 .chatContainer form input{
     margin: 0;
-    width: 90%;
+    width: 75vw;
     border: 2px solid gold
 }
 
@@ -33,7 +31,3 @@
     padding-bottom: 12px;
 }
 
-.emoji{
-    height: 18px;
-    width: 18px;
-}

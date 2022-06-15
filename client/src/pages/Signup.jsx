@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/signup.css"
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { signupRoute } from "../utils/Routes";
-//import Navbar from "../components/Navbar";
 
 export default function Signup() {
   const navigate = useNavigate();
-  const toastOptions = {
-    position: "bottom-right",
-    autoClose: 8000,
-    pauseOnHover: true,
-    draggable: true,
-    theme: "dark",
-  };
 
   const [values, setValues] = useState({
     username: "",
@@ -38,25 +27,22 @@ export default function Signup() {
   const handleValidation = () => {
     const { password, confirmPassword, username, email } = values;
     if (password !== confirmPassword) {
-      toast.error(
+      console.error(
         "Password and confirm password should be same.",
-        toastOptions
       );
       return false;
     } else if (username.length < 3) {
-      toast.error(
+      console.error(
         "Username should be greater than 3 characters.",
-        toastOptions
       );
       return false;
     } else if (password.length < 8) {
-      toast.error(
+      console.error(
         "Password should be equal or greater than 8 characters.",
-        toastOptions
       );
       return false;
     } else if (email === "") {
-      toast.error("Email is required.", toastOptions);
+      console.error("Email is required.");
       return false;
     }
 
@@ -74,7 +60,7 @@ export default function Signup() {
       });
 
       if (data.status === false) {
-        toast.error(data.msg, toastOptions);
+        console.error(data.msg);
       }
       if (data.status === true) {
         localStorage.setItem(
@@ -91,10 +77,9 @@ export default function Signup() {
 
   return (
     <>
-      {/* <Navbar/> */}
       <div className="signupbody">
 
-        <SignupContainer>
+        <div className="signupContainer">
           <form action="" className="signupform" onSubmit={(event) => handleSubmit(event)}>
             <div className="header">
               <h1>TALK SPORTS</h1>
@@ -126,23 +111,10 @@ export default function Signup() {
             <button type="submit">Create Account</button>
             <Link to='/login'>Login</Link>
           </form>
-        </SignupContainer>
+        </div>
       </div>
-      <ToastContainer />
     </>
   )
 }
   
-  const SignupContainer = styled.div`
-    height:100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    
-  `;
+
