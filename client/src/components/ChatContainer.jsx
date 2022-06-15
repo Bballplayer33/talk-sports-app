@@ -33,7 +33,7 @@ export default function ChatContainer() {
         mainSocket.emit('add-user', currentUser._id);
         setSocket(mainSocket)
       } else {
-        socket.on("msg-received", data => {
+        socket.on("msg-recieved", data => {
           setMessages(msg => [...msg, data])
         })
       }
@@ -42,6 +42,8 @@ export default function ChatContainer() {
 
   console.log(messages)
 
+
+
   const handleSendMsg = async (msg) => {
     const data = {
       currentUser, message: msg
@@ -49,21 +51,21 @@ export default function ChatContainer() {
     socket.emit('msg-sent', data)
   };
 
+
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
 
   }, [messages]);
 
- 
   return (
     <ChatContainerDiv>
       <div className="header">
         <div className="user-details">
-          <div className="avatar">
-          <img src={require('../assets/welcome/Basketball.png')} />
+          <div className="avater">
+            <img src={require('../assets/welcome/Basketball.png')} />
           </div>
           <div className="username">
-          <h3>{'All Chats'}</h3>
+            <h3>{'All Chats'}</h3>
           </div>
         </div>
         <Logout />
@@ -72,7 +74,7 @@ export default function ChatContainer() {
         {messages.map((message) => {
           return (
             <div ref={scrollRef} key={uuidv4()}>
-              <div className={`message ${message.currentUser.username == currentUser.username ? 'sended' : 'received'}`}>
+              <div className={`message ${message.currentUser.username == currentUser.username ? 'sended' : 'recieved'}`}>
                 <div className="content">
                   <p>{message.message}</p>
                 </div>
@@ -93,6 +95,7 @@ const ChatContainerDiv = styled.div`
     overflow: hidden;
     @media screen and (min-width: 720px) and (max-width: 1080px) {
     grid-template-rows: 15% 70% 15%;}
+
     .chat-header {
       display: flex;
       justify-content: space-between;
@@ -123,7 +126,7 @@ const ChatContainerDiv = styled.div`
       &::-webkit-scrollbar {
         width: 0.2rem;
         &-thumb {
-          background-color: #ffffff39;
+          background-color: gold;
           width: 0.1rem;
           border-radius: 1rem;
         }
@@ -137,7 +140,7 @@ const ChatContainerDiv = styled.div`
           padding: 1rem;
           font-size: 1.1rem;
           border-radius: 1rem;
-          color: #d1d1d1;
+          color: gold;
           @media screen and (min-width: 720px) and (max-width: 1080px) {
             max-width: 70%;
           }
@@ -146,11 +149,11 @@ const ChatContainerDiv = styled.div`
       .sended {
         justify-content: flex-end;
         .content {
-          background-color: #7962e3;
-          color : white;
+          background-color: gold;
+          color : black;
         }
       }
-      .received {
+      .recieved {
         justify-content: flex-start;
         .content {
           background-color: gold;
@@ -158,7 +161,8 @@ const ChatContainerDiv = styled.div`
         }
       }
     }
+
 `;
 
-  
+
 
