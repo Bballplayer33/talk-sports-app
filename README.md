@@ -1,6 +1,6 @@
 # Talk Sports App 
 
-URL of Deployed Application:
+URL of Deployed Application: https://lets-talk-sports-app.herokuapp.com/
 
 URL of GitHub Repository: https://github.com/Bballplayer33/talk-sports-app
 
@@ -33,14 +33,29 @@ ________________________________________________________________________________
 * Protect sensitive API Key information on the server.
 * Include a high-quality README (with a unique name, description, technologies used, screenshot, and link to deployed application).
 
+## User Instructions & Technology Used - Open terminals from client side and server 
 
+* npm run
+* npm start
+
+<img src="./client/src/assets/Tech.png" alt="Team">
 
 ## Presentation Link - https://docs.google.com/presentation/d/1nlVu9VXNgA1PwOTKEmHdzFpTvrvasNylPNUPWoDKrtU/edit#slide=id.gfab7020b52_0_107
 
 
 ## Mock-Up
 
+<img src="./client/src/assets/signuppage.png" alt="Mainpage">
+
+<img src="./client/src/assets/login.png" alt="Login">
+
+<img src="./client/src/assets/jordan.png" alt="Welcomepage">
+
+<img src="./client/src/assets/chatroom.png" alt="Chat">
 
 ## Credits
 * Bitmoji - Bitmoji.com
 * Globenewswire - Globenewswire.com
+* Pixels - Free Sports Photos
+* Facemoji and Memoji- Microsoft 
+
